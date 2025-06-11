@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +16,27 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { CheckCircle } from "lucide-react";
-//ga keburu mendingan ke main appsnya aja
+
+// ----------------------
+// Placeholder Definitions
+// ----------------------
+
+// Type definition for feedback data
+type FeedbackRecord = {
+  name?: string;
+  email?: string;
+  feedback_text: string;
+};
+
+// Simulated feedback save function (no backend yet)
+async function saveFeedback(feedback: FeedbackRecord): Promise<void> {
+  console.log("Simulating feedback save:", feedback);
+  return new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate network delay
+}
+
+// ----------------------
+// Main Feedback Page
+// ----------------------
 
 export default function FeedbackPage() {
   const [name, setName] = useState("");
@@ -44,7 +63,6 @@ export default function FeedbackPage() {
 
       await saveFeedback(feedbackRecord);
 
-      // Reset form
       setName("");
       setEmail("");
       setFeedbackText("");
@@ -118,9 +136,7 @@ export default function FeedbackPage() {
                 className="w-full mt-4"
               >
                 {isSubmitting ? (
-                  <>
-                    <span className="mr-2">Submitting...</span>
-                  </>
+                  <span className="mr-2">Submitting...</span>
                 ) : (
                   <>Submit Feedback</>
                 )}

@@ -145,7 +145,6 @@ export default function SummarizePage() {
       }).format(date);
     } catch (error) {
       console.warn("Failed to format date:", error);
-
       return dateString;
     }
   };
@@ -428,30 +427,6 @@ export default function SummarizePage() {
                       <p className="whitespace-pre-wrap leading-relaxed text-sm">
                         {item.summary}
                       </p>
-                    </div>
-
-                    {/* Metadata */}
-                    <div className="text-sm text-muted-foreground space-y-1">
-                      {item.original_length > 0 && item.summary_length > 0 && (
-                        <div>
-                          <span className="font-medium">Word reduction:</span>{" "}
-                          {item.original_length} → {item.summary_length} words
-                        </div>
-                      )}
-                      {item.compression_ratio && (
-                        <div>
-                          <span className="font-medium">
-                            Compression ratio:
-                          </span>{" "}
-                          {item.compression_ratio}
-                        </div>
-                      )}
-                      {item.methods_used?.summary && (
-                        <div>
-                          <span className="font-medium">Method used:</span>{" "}
-                          {item.methods_used.summary}
-                        </div>
-                      )}
                     </div>
                   </CardContent>
                 </Card>

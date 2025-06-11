@@ -19,7 +19,7 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { theme } = useTheme(); // ⬅️ Ambil nilai tema saat ini
+  const { theme } = useTheme();
 
   const logoSrc = theme === "dark" ? "/logodark.png" : "/logo.png";
 
