@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { CheckCircle } from "lucide-react";
-//ga keburu mendingan ke main appsnya aja dulu
+//ga keburu mendingan ke main appsnya aja
 
 export default function FeedbackPage() {
   const [name, setName] = useState("");
@@ -29,11 +29,7 @@ export default function FeedbackPage() {
     e.preventDefault();
 
     if (!feedbackText.trim()) {
-      toast({
-        title: "Missing information",
-        description: "Please provide your feedback",
-        variant: "destructive",
-      });
+      toast("Missing information. Please provide your feedback.");
       return;
     }
 
@@ -53,18 +49,10 @@ export default function FeedbackPage() {
       setEmail("");
       setFeedbackText("");
 
-      toast({
-        title: "Feedback submitted",
-        description: "Thank you for your feedback! We appreciate your input.",
-        variant: "default",
-      });
+      toast("Feedback submitted. Thank you for your feedback!");
     } catch (error) {
       console.error("Error while saving feedback:", error);
-      toast({
-        title: "Error",
-        description: "Failed to submit feedback. Please try again later.",
-        variant: "destructive",
-      });
+      toast("Error submitting feedback. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
