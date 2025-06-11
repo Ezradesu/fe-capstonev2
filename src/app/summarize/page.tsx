@@ -130,7 +130,7 @@ export default function SummarizePage() {
     if (activeTab === "history") {
       loadHistory();
     }
-  }, []);
+  }, [activeTab]);
 
   // Format date for display
   const formatDate = (dateString: string) => {
@@ -144,6 +144,8 @@ export default function SummarizePage() {
         minute: "2-digit",
       }).format(date);
     } catch (error) {
+      console.warn("Failed to format date:", error);
+
       return dateString;
     }
   };

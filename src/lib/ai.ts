@@ -17,6 +17,23 @@ export type SummaryResult = {
   created_at: string;
 };
 
+type RawSummaryRecord = {
+  original?: string;
+  original_text?: string;
+  summary?: string;
+  summary_text?: string;
+  questions?: unknown;
+  compression_ratio?: string;
+  methods_used?: string[];
+  word_count?: { original?: number; summary?: number };
+  original_word_count?: number;
+  summary_word_count?: number;
+  timestamp?: string;
+  created_at?: string;
+  processing_mode?: string;
+  status?: string;
+};
+
 export type SummaryRequest = {
   text: string;
   length: "short" | "medium" | "long";
@@ -56,7 +73,6 @@ async function callSummaryAPI(text: string) {
 export async function summarizeText({
   text,
   length,
-  userName,
   includeQuestions = true,
   questionCount = 3,
 }: SummaryRequest): Promise<SummaryResult> {
@@ -194,14 +210,18 @@ export async function getSummaryHistory(): Promise<SummaryResult[]> {
 }
 
 // Helper to normalize questions
-function normalizeQuestions(input: any): string[] {
-  if (Array.isArray(input)) return input;
+function normalizeQuestions(input: unknown): string[] {
+  if (Array.isArray(input)) {
+    return input.filter((q): q is string => typeof q === "string");
+  }
   if (typeof input === "string") {
     try {
       const parsed = JSON.parse(input);
-      if (Array.isArray(parsed)) return parsed;
+      if (Array.isArray(parsed)) {
+        return parsed.filter((q): q is string => typeof q === "string");
+      }
     } catch {
-      return [input]; // fallback: treat plain string as single question
+      return [input];
     }
     return [input];
   }
@@ -209,7 +229,7 @@ function normalizeQuestions(input: any): string[] {
 }
 
 // Transform API history record to SummaryResult
-function transformToSummaryResult(apiRecord: any): SummaryResult {
+function transformToSummaryResult(apiRecord: RawSummaryRecord): SummaryResult {
   return {
     original_text: apiRecord.original || apiRecord.original_text,
     summary: apiRecord.summary || apiRecord.summary_text,

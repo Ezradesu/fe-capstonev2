@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { CheckCircle } from "lucide-react";
-// import { saveFeedback, type FeedbackRecord } from "@/lib/supabase";
+//ga keburu mendingan ke main appsnya aja dulu
 
 export default function FeedbackPage() {
   const [name, setName] = useState("");
@@ -59,6 +59,7 @@ export default function FeedbackPage() {
         variant: "default",
       });
     } catch (error) {
+      console.error("Error while saving feedback:", error);
       toast({
         title: "Error",
         description: "Failed to submit feedback. Please try again later.",
