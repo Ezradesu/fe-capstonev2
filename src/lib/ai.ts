@@ -231,8 +231,8 @@ function normalizeQuestions(input: unknown): string[] {
 // Transform API history record to SummaryResult
 function transformToSummaryResult(apiRecord: RawSummaryRecord): SummaryResult {
   return {
-    original_text: apiRecord.original || apiRecord.original_text,
-    summary: apiRecord.summary || apiRecord.summary_text,
+    original_text: apiRecord.original || apiRecord.original_text || "",
+    summary: apiRecord.summary || apiRecord.summary_text || "",
     questions: normalizeQuestions(apiRecord.questions),
     compression_ratio: apiRecord.compression_ratio || "",
     methods_used: apiRecord.methods_used || [],
