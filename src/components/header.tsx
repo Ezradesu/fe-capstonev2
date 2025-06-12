@@ -1,4 +1,5 @@
 "use client";
+// ga sempet mendingan fokus main apps
 
 import { useState } from "react";
 import Link from "next/link";

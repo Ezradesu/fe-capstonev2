@@ -14,7 +14,7 @@ export default function HomePage() {
               Ringkas sekarang belajar kemudian
             </h1>
             <p className="text-xl text-muted-foreground max-w-[600px] mx-auto">
-              Belajar cepat dan libeh efisien dengan AI yang kami kembangkan
+              Belajar cepat dan lebih efisien dengan AI yang kami kembangkan
               merubah teks panjang kamu menjadi lebih ringkas.
             </p>
           </div>

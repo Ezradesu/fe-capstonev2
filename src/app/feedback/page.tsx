@@ -17,26 +17,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { CheckCircle } from "lucide-react";
 
-// ----------------------
-// Placeholder Definitions
-// ----------------------
-
-// Type definition for feedback data
 type FeedbackRecord = {
   name?: string;
   email?: string;
   feedback_text: string;
 };
 
-// Simulated feedback save function (no backend yet)
 async function saveFeedback(feedback: FeedbackRecord): Promise<void> {
   console.log("Simulating feedback save:", feedback);
-  return new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate network delay
+  return new Promise((resolve) => setTimeout(resolve, 1000));
 }
-
-// ----------------------
-// Main Feedback Page
-// ----------------------
 
 export default function FeedbackPage() {
   const [name, setName] = useState("");
@@ -48,7 +38,7 @@ export default function FeedbackPage() {
     e.preventDefault();
 
     if (!feedbackText.trim()) {
-      toast("Missing information. Please provide your feedback.");
+      toast("Tidak ada feedback yang diisi.");
       return;
     }
 
@@ -67,10 +57,10 @@ export default function FeedbackPage() {
       setEmail("");
       setFeedbackText("");
 
-      toast("Feedback submitted. Thank you for your feedback!");
+      toast("Feedback berhasil disubmitted");
     } catch (error) {
       console.error("Error while saving feedback:", error);
-      toast("Error submitting feedback. Please try again later.");
+      toast("Error submitting feedback.");
     } finally {
       setIsSubmitting(false);
     }
@@ -80,9 +70,11 @@ export default function FeedbackPage() {
     <div className="sm:mx-40 mx-10 py-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-heading mb-4">We Value Your Feedback</h1>
+          <h1 className="text-4xl font-heading mb-4">
+            Kami Sangat Menghargai Penilaian Anda
+          </h1>
           <p className="text-xl text-muted-foreground">
-            Help us improve TextAI by sharing your thoughts and experiences.
+            Bantu Kami Mengembangkan Aplikasi Kami.
           </p>
         </div>
 
@@ -90,27 +82,27 @@ export default function FeedbackPage() {
           <CardHeader>
             <CardTitle>Feedback Form</CardTitle>
             <CardDescription>
-              Please fill out the form below to submit your feedback.
+              Mohon isi formulir di bawah ini untuk mengirimkan feedback.
             </CardDescription>
           </CardHeader>
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Name (optional)</Label>
+                  <Label htmlFor="name">Nama (opsional)</Label>
                   <Input
                     id="name"
-                    placeholder="Your name"
+                    placeholder="Nama Anda"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email (optional)</Label>
+                  <Label htmlFor="email">Email (opsional)</Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="your@email.com"
+                    placeholder="anda@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -118,10 +110,10 @@ export default function FeedbackPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="feedback">Your Feedback</Label>
+                <Label htmlFor="feedback">Feedback Anda</Label>
                 <Textarea
                   id="feedback"
-                  placeholder="Please share your thoughts, ideas, suggestions, or report any issues..."
+                  placeholder="Mohon berikan kami peniliaian Anda"
                   className="min-h-[150px]"
                   value={feedbackText}
                   onChange={(e) => setFeedbackText(e.target.value)}
@@ -155,10 +147,9 @@ export default function FeedbackPage() {
                 Committed to Improvement
               </h3>
               <p className="text-muted-foreground">
-                We review all feedback and are committed to continuously
-                improving our service. While we may not be able to respond to
-                every submission individually, your input is valuable and will
-                be considered as we develop new features and enhancements.
+                Kami berkomitmen untuk memberikan tanggapan yang sebaik-baiknya
+                untuk memperbaiki dan meningkatkan layanan kami. Masukan dari
+                anda sangat berarti bagi kami.
               </p>
             </div>
           </div>

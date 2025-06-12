@@ -12,24 +12,23 @@ export default function AboutPage() {
           Siapakah Tim Sukses itu?
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          kami merupakan sebuah kelompok kecil yang berdedikasi dalam
+          Kami merupakan sebuah kelompok kecil yang berdedikasi dalam
           mengembangkan aplikasi web berbasis kecerdasan buatan. Kami memiliki
           kompetensi dan pengalaman yang mendukung dalam mengembangkan proyek
           ini.
         </p>
       </section>
 
-      {/* Our Story */}
       <section className=" sm:mx-40 mx-10 py-12 md:py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-heading mb-6">Cerita dari kami</h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Proyek ini bertujuan untuk membangun sebuah aplikasii web
-                berbasis kecerdasan buatan yang memilikii kemampuan untuk
+                Proyek ini bertujuan untuk membangun sebuah aplikasi web
+                berbasis kecerdasan buatan yang memiliki kemampuan untuk
                 melakukan peringkasan, serta memberikan pertanyaan dalam bentuk
-                teks secara otomatis. latar belakang dari proyek kami ini
+                teks secara otomatis. Latar belakang dari proyek kami ini
                 berasal dari kebutuhan pelajar dan masyarakat umuk untuk
                 memahami teks panjang dengan lebih efisien. Aplikasi ini
                 ditargetkan untuk orang yang memiliki keterbatasan kemampuan
@@ -40,7 +39,7 @@ export default function AboutPage() {
                 Rencana dari pelaksanaan projek ini terbagi menjadi beberapa
                 tahap utama yaitu, pengembangan frontend, pengembangan backend
                 untuk AI, pengembangan backend untuk aplikasi utama, dan juga
-                backend untuk integrasi Machine Learnings. Kami mengusahakan
+                backend untuk integrasi Machine Learning. Kami mengusahakan
                 kemudahan dalam pemakaian pada aplikasi kami sehingga aplikasi
                 ini mudah diakses oleh semua orang, dan tidak perlu login untuk
                 bisa menggunakan aplikasi kami. Evaluasi hasil ringkasan akan
@@ -48,7 +47,7 @@ export default function AboutPage() {
                 sebenarnya.
               </p>
               <p>
-                Hasil askhir yang kami harapkan adalah sebuah aplikasi web yang
+                Hasil akhir yang kami harapkan adalah sebuah aplikasi web yang
                 dapat membantu proses belajar atau memahami informasi dari teks,
                 terutama pada kalangan pelajar, pendidik, atau bahkan pengguna
                 umum. Dengan hadirnya produk kami ini, kami berharap supaya
@@ -117,7 +116,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
       <section className="py-12 md:py-20">
         <h2 className="text-3xl font-heading text-center mb-12">Dari Kami</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -125,31 +123,43 @@ export default function AboutPage() {
             {
               name: "Ezra Raditya",
               role: "Fullstack developer",
+              photo: "/eja.png",
             },
             {
               name: "Muhammad haikal",
               role: "Backend Engineer",
+              photo: "/hekal.png",
             },
             {
               name: "Gregorius Kevin",
-              role: "backend Engineer",
+              role: "Backend Engineer",
+              photo: "/kepin.png",
             },
             {
               name: "Meilani Kizana",
               role: "AI Engineer",
+              photo: "/mei.png",
             },
             {
               name: "Jesica Febiola",
               role: "AI Engineer",
+              photo: "/jesi.png",
             },
             {
-              name: "fransiska Artha",
+              name: "Fransiska Artha",
               role: "AI Engineer",
+              photo: "/siska.png",
             },
           ].map((member, index) => (
             <div key={index} className="flex flex-col items-center">
-              <div className="w-32 h-32 bg-muted rounded-full mb-4 flex items-center justify-center text-muted-foreground">
-                <span>Photo</span>
+              <div className="w-32 h-32 rounded-full overflow-hidden mb-4">
+                <Image
+                  src={member.photo}
+                  alt={member.name}
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-lg font-medium">{member.name}</h3>
               <p className="text-sm text-muted-foreground">{member.role}</p>
@@ -200,17 +210,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-12 md:py-20 text-center">
         <h2 className="text-3xl font-heading mb-6">
-          Siap Melangkah bersama BrevityAI?
+          Siap Melangkah Bersama BrevityAI?
         </h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
           Ikuti langkah para pengguna kami yang sudah menyimpan waktu mereka
           dengan menggunakan AI kami
         </p>
         <Button size="lg" asChild>
-          <Link href="/app">
+          <Link href="/summarize">
             Mulai Gratis <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
